@@ -9,14 +9,14 @@
 %endif
 
 Name:       npgsql
-Version:    3.0.0
+Version:    3.0.1
 Release:    1%{?dist}
 Summary:    A .Net Data Provider for PostgreSQL
 
 Group:      Development/Languages
 License:    MIT
 URL:        http://npgsql.projects.pgfoundry.org/
-Source0:    https://github.com/%{name}/%{name}/archive/v3.0.0.tar.gz#/%{name}-%{version}.tar.gz
+Source0:    https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:    npgsql.pc
 
 BuildRequires:  mono-devel
@@ -39,7 +39,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn %{name}-%{version}
-nuget restore Npgsql2015.sln
+nuget restore Npgsql.sln
 
 %build
 xbuild /tv:4.0 src/Npgsql/Npgsql.csproj
@@ -65,6 +65,9 @@ gacutil -i %{buildroot}%{_monodir}/npgsql/Npgsql.dll -f -package npgsql -root %{
 %{_libdir}/pkgconfig/npgsql.pc
 
 %changelog
+* Fri Aug 21 2015 Claudio Rodrigo Pereyra Diaz <elsupergomez@fedoraproject.org> - 3.0.1-1
+- Update to 3.0.1
+
 * Thu Aug 13 2015 Claudio Rodrigo Pereyra Diaz <elsupergomez@fedoraproject.org> - 3.0.0-1
 - Update to 3.0.0
 
