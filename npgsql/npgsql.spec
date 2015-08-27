@@ -39,6 +39,7 @@ Development files for %{name}.
 
 %prep
 %setup -qn %{name}-%{version}
+sed -i "s#<TreatWarningsAsErrors>true</TreatWarningsAsErrors>#<TreatWarningsAsErrors>false</TreatWarningsAsErrors>#g" src/Npgsql/Npgsql.csproj
 nuget restore Npgsql.sln
 
 %build
